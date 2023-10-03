@@ -25,8 +25,8 @@ class DatabaseSeeder extends Seeder
         Guest::truncate();
 
         User::factory()->count(3)->create();
-        Event::factory()->count(2)->create();
-        Table::factory()->count(4)->create();
+        Event::factory()->count(3)->create();
+        Table::factory()->count(3)->create();
         Group::factory()->count(2)->create();
         Guest::factory()->count(15)->create();
     }
