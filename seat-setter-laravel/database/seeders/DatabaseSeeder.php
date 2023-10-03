@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->count(3)->create();
         Event::factory()->count(3)->create();
+
+        dd(Event::all()->count());
+
         Table::factory()->count(3)->create();
         Group::factory()->count(2)->create();
         Guest::factory()->count(15)->create();
