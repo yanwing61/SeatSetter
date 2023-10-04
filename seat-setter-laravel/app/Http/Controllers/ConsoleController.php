@@ -8,7 +8,37 @@ class ConsoleController extends Controller
 {
     //
 
-    public function dashboard(){
+    public function dashboard()
+    {
         return view('console.dashboard');
     }
+
+    public function loginForm()
+    {
+        return view('console.login');
+    }
+
+    public function login()
+    {
+        $attributes = request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if(auth()->attempt($attributes))
+        {
+            return view('/console/dashboard');
+        }
+
+        return back()
+            ->withInput()
+            ->withErrors(['email' => 'Invalid email/password']);
+    }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+
 }
