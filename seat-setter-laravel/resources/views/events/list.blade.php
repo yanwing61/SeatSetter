@@ -24,6 +24,15 @@
         <?php endif; ?>
     </header>
 
+    <?php if(session()->has('message')): ?>
+
+        <div>
+            <div>
+                <?= session()->get('message')?>
+            </div>
+        </div>
+    <?php endif?>
+
     <section>
         
             <h2>Manage Events</h2>
@@ -36,11 +45,11 @@
             <?php foreach($events as $event): ?>
                 <tr>
                     <td>{{$event->event_name}}</td>
-                    <td><a href="/console/events/edit/{{$event->id}}">Edit</a></td>
-                    <td><a href="/console/events/delete/{{$event->id}}">Delete</a></td>
+                    <td><a href="/console/events/edit/{{$event->event_id}}">Edit</a></td>
+                    <td><a href="/console/events/delete/{{$event->event_id}}">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
-    </table>
+            </table>
 
     <a href="/console/events/add">New Event</a>
 
