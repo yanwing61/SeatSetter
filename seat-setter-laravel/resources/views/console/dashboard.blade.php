@@ -11,7 +11,17 @@
 </head>
 <body>
     <header>
-        <h1>Welcome! Dashboard</h1>
+        <h1>Dashboard</h1>
+
+        <?php if(Auth::check()): ?>
+            Welcome! You're logged in as
+            <?= auth()->user()->name ?> | 
+            <a href="/console/logout">Log Out</a> | 
+            <a href="/console/dashboard">Dashboard</a> | 
+            <a href="/">HomePage</a>
+        <?php else: ?>
+                <a href="/">Return to My HomePage</a>
+        <?php endif; ?>
     </header>
 
     <section>

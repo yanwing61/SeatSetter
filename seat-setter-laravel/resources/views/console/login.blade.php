@@ -11,7 +11,17 @@
 </head>
 <body>
     <header>
-        <h1>Login</h1>
+        <h1>Welcome! Please Login</h1>
+
+        <?php if(Auth::check()): ?>
+            Welcome! You're logged in as
+            <?= auth()->user()->name ?> | 
+            <a href="/console/logout">Log Out</a> | 
+            <a href="/console/dashboard">Dashboard</a> | 
+            <a href="/">HomePage</a>
+        <?php else: ?>
+                <a href="/">Return to My HomePage</a>
+        <?php endif; ?>
     </header>
 
     <section>
@@ -25,7 +35,7 @@
                 
                 @if ($errors->first('email'))
                     <br>
-                    <span class="w3-text-red">{{$errors->first('email')}}</span>
+                    <span>{{$errors->first('email')}}</span>
                 @endif
             </div>
 
