@@ -22,4 +22,25 @@ class EventsController extends Controller
             ->with('message', 'Event has been deleted.');
 
     }
+
+    public function addForm()
+    {
+        return view('events.add');
+    }
+
+    public function add()
+    {
+        $attributes = request()->validate([
+            'event_name' => 'required',
+        ]);
+
+        $event = new Event();
+        $event->event_name = $attributes['event_name'];
+        $event->user_id = auth()->id();
+        $event->save();
+
+        return redirect('/console/events/list')
+            ->with('message', 'Event has been added.');
+
+    }
 }

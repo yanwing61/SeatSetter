@@ -27,3 +27,5 @@ Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware(
 
 Route::get('/console/events/list', [EventsController::class, 'list'])->middleware('auth');
 Route::get('/console/events/delete/{event:event_id}', [EventsController::class, 'delete'])->where('event', '[0-9]+')->middleware('auth');
+Route::get('/console/events/add', [EventsController::class, 'addForm'])->middleware('auth');
+Route::post('/console/events/add', [EventsController::class, 'add'])->middleware('auth');
