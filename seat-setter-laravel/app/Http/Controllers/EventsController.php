@@ -31,7 +31,7 @@ class EventsController extends Controller
     public function add()
     {
         $attributes = request()->validate([
-            'event_name' => 'required',
+            'event_name' => 'required|unique:events|max:255',
         ]);
 
         $event = new Event();
@@ -42,5 +42,26 @@ class EventsController extends Controller
         return redirect('/console/events/list')
             ->with('message', 'Event has been added.');
 
+    }
+
+    public function editForm(Event $event)
+    {
+        return view('events.edit',[
+            'event' => $event
+        ]);
+    }
+
+    public function edit(Event $event)
+    {
+        $attributes = request()->validate([
+            'event_name' => 'required|unique:events|max:255',
+        ]);
+
+        $event->event_name = $attributes['event_name'];
+        $event->user_id = auth()->id();
+        $event->save();
+
+        return redirect('/console/events/list')
+            ->with('message', 'Event has been edited.');
     }
 }

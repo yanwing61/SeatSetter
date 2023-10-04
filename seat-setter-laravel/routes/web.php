@@ -29,3 +29,5 @@ Route::get('/console/events/list', [EventsController::class, 'list'])->middlewar
 Route::get('/console/events/delete/{event:event_id}', [EventsController::class, 'delete'])->where('event', '[0-9]+')->middleware('auth');
 Route::get('/console/events/add', [EventsController::class, 'addForm'])->middleware('auth');
 Route::post('/console/events/add', [EventsController::class, 'add'])->middleware('auth');
+Route::get('/console/events/edit/{event:event_id}', [EventsController::class, 'editForm'])->where('event', '[0-9]+')->middleware('auth');
+Route::post('/console/events/edit/{event:event_id}', [EventsController::class, 'edit'])->where('event', '[0-9]+')->middleware('auth');
