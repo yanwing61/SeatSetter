@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ConsoleController;
+use App\Http\Controllers\EventsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::get('/console/dashboard', [ConsoleController::class, 'dashboard'])->middl
 Route::get('/console/login', [ConsoleController::class, 'loginForm'])->middleware('guest')->name('login');
 Route::post('/console/login',[ConsoleController::class, 'login'])->middleware('guest');
 Route::get('/console/logout', [ConsoleController::class, 'logout'])->middleware('auth');
+
+Route::get('/console/events/list', [EventsController::class, 'list'])->middleware('auth');
