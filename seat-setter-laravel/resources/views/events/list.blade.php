@@ -27,15 +27,15 @@
     <section>
         
             <h2>Manage Events</h2>
-            <table class="w3-table w3-stripped w3-bordered w3-margin-bottom">
-                <tr class="w3-red">
-                    <th>Name</th>
+            <table>
+                <tr>
+                    <th>Event Name</th>
                     <th></th>
                     <th></th>
                 </tr>
             <?php foreach($events as $event): ?>
                 <tr>
-                    <td>{{$event->title}}</td>
+                    <td>{{$event->event_name}}</td>
                     <td><a href="/console/events/edit/{{$event->id}}">Edit</a></td>
                     <td><a href="/console/events/delete/{{$event->id}}">Delete</a></td>
                 </tr>
