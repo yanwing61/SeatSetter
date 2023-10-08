@@ -11,7 +11,7 @@
 </head>
 <body>
     <header>
-        <h1>Dashboard</h1>
+        <h1>SeatSetter Dashboard</h1>
 
         <?php if(Auth::check()): ?>
             Welcome! You're logged in as

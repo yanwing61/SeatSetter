@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ConsoleController;
 use App\Http\Controllers\EventsController;
+use App\Http\Controllers\SeatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ Route::get('/console/events/add', [EventsController::class, 'addForm'])->middlew
 Route::post('/console/events/add', [EventsController::class, 'add'])->middleware('auth');
 Route::get('/console/events/edit/{event:event_id}', [EventsController::class, 'editForm'])->where('event', '[0-9]+')->middleware('auth');
 Route::post('/console/events/edit/{event:event_id}', [EventsController::class, 'edit'])->where('event', '[0-9]+')->middleware('auth');
+
+Route::get('/console/seating/seating', [SeatingController::class, 'index']);
