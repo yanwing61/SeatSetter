@@ -40,9 +40,8 @@ a{
     text-decoration: none;
 }
 
-.text-bg-theme{
-    background-color: color-mix(in srgb, var(--pri-color) 85%, transparent);
-    height: 100%;
+ul{
+    list-style-type: none; 
 }
 
 .no-border{
@@ -72,28 +71,6 @@ a{
 }
 
 /* HEADER & NAV */
-header{
-    padding: 1em;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-    background-color: var(--sec-color);
-    z-index: 2;
-}
-
-#linkedin, #github{
-    max-width: 40px;
-}
-
-#logo a{
-    color: var(--pri-color);
-}
-
-#logo{
-    font-size: 2em;
-}
 
 #mobile-menu{
     display: none;
@@ -105,12 +82,13 @@ header{
     gap: 1em;
 }
 
-#main-nav a{
+nav a{
     padding-left: 10px;
     padding-right: 10px;
+    color: var(--pri-color);
 }
 
-#main-nav a:hover{
+nav a:hover{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);
@@ -123,125 +101,7 @@ header{
     align-self: center;
 }
 
-
-
-
-/* WELCOME SECTION */
-#welcome{
-    object-fit: cover;
-    /* height: 80vh; */
-    /* padding: 5%; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    border: 6px solid var(--pri-color);
-    /* background-color: var(--pri-color); */
-}
-
-.slogan{
-    font-family: 'Libre Barcode 128 Text', cursive;
-    font-size: 4em;
-    align-self: center;
-}
-
-#hero-text, #headline{
-    background: var(--gradient-base);
-    background: var(--gradient-level);
-    margin: 0;
-    padding: 0 5%;
-    /* flex-grow: 1; */
-    color: var(--text-color);
-}
-
-#hero-text{
-    padding-top: 1em;
-    font-size: 4em;
-}
-
-#headline{
-    font-weight: 400;
-    font-size: 2em;
-    width: 100%;
-    padding-bottom: 1em;
-}
-
-#intro{
-    display: flex;
-    flex-direction: row;
-    /* flex-wrap: wrap; */
-}
-
-#intro-text{
-    padding: 5%;
-    max-width: 66%;
-}
-
-.propic{
-    flex-grow: 1;
-    align-self: center;
-}
-
-.intro-text-para{
-    font-size: 1.2em;
-}
-
-#intro-slogan{
-    font-size: 3em;
-    align-self: flex-end;
-    padding: 0 5%;
-}
-
-#site-name{
-    font-style: italic;
-}
-
-
-/* ABOUT SECTION */
-#about{
-    display: flex;
-    flex-direction: row;
-    gap: 2em;
-}
-
-.skill-title{
-    font-size: 1.25em;
-}
-
-#propic img, #humber, #cuhk, #uib{
-    max-width: 300px;
-    margin: 2em 0;
-}
-
-.school{
-    font-weight: 500!important;
-}
-
-#about-text{
-    flex-grow: 2;
-}
-
-summary{
-    font-size: calc(1.3rem + .6vw);
-}
-
-details{
-    margin-top: 5em;
-}
-
-/* PROJECTS */
-.card{
-    margin: 1em;
-}
-
-.video{
-    margin: 2em 1em!important;
-}
-
-.video-title{
-    color: var(--text-color);
-    position: relative;
-    top: 50%;
-}
+/* MAIN */
 
 .external-link{ 
     max-width: 150px;
@@ -249,7 +109,7 @@ details{
     padding: 0.1em;
 }
 
-.external-link a, a{
+section a{
     display: block;
     color:  var(--text-color);
     margin: 0.5em 0;
@@ -260,45 +120,17 @@ details{
     border: 3px solid var(--text-color);
 }
 
-.external-link a:hover, a:hover{
+section a:hover{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);
 }
 
-/* FOOTER (CONTACT) */
+/* FOOTER */
 #footer{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);
-}
-
-#connect, #footer a{
-    color: var(--sec-color);
-}
-
-footer img{
-    margin-right: 1em;
-}
-
-#footer-contact{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20%;
-}
-
-#footer-copyright{
-    margin-top: 2em;
-}
-
-#top{
-    background: var(--gradient-base);
-    background: var(--gradient-level);
-    padding: 0.5em;
-    position: fixed;
-    bottom: 0;
-    right: 0;
 }
 
 /* MEDIA QUERY*/
@@ -326,9 +158,9 @@ footer img{
         display: block;
     }
 
-    .nav{
+    /* .nav{
         display: none;
-    }
+    } */
 
     #header-right {
         display: flex;
