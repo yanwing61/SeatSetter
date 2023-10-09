@@ -5,6 +5,8 @@
     <section>
         
             <h2>Manage Groups</h2>
+            <a href="/console/groups/add"> + New Group</a>
+            
             <table class="table table-hover">
                 <tr>
                     <th>Group Name</th>
@@ -22,7 +24,6 @@
             <?php endforeach; ?>
             </table>
 
-    <a href="/console/groups/add"> + New Group</a>
 
 
     </section>
