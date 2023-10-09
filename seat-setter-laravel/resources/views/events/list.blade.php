@@ -5,7 +5,7 @@
     <section>
         
             <h2>Manage Events</h2>
-            <table>
+            <table class="table table-hover">
                 <tr>
                     <th>Event Name</th>
                     <th></th>

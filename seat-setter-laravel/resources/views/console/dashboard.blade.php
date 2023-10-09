@@ -3,7 +3,7 @@
 @section ('content')
 
     <section>
-        <ul id="list">
+        <ul id="dashboardList">
             <li><a href="/console/users/list">Manage Users</a></li>
             <li><a href="/console/events/list">Manage Events</a></li>
             <li><a href="/console/groups/list">Manage Groups</a></li>
