@@ -53,6 +53,10 @@ ul{
     --bs-card-border-width: 0;
 }
 
+form span{
+    color: red;
+}
+
 #seating-plan-con{
     display: flex;
     flex-direction: column;
