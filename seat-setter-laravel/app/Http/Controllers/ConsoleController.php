@@ -42,7 +42,7 @@ class ConsoleController extends Controller
     public function logout()
     {
         auth()->logout();
-        return redirect('/');
+        return redirect('/console/login');
     }
 
 }

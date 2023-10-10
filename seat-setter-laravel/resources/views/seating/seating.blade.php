@@ -14,8 +14,9 @@
 
         <div id="tables">
             <?php foreach($tables as $table): ?>
-                <div id="table1" class="droppable ui-widget-header" data-name="{{$table->table_id}}">
+                <div id="{{$table->table_id}}" class="droppable ui-widget-header" data-name="{{$table->table_id}}">
                     <p>Table {{$table->table_id}} : {{$table->num_of_guest}} guests</p>
+                    <p class="msg"></p>
                 </div>
             <?php endforeach; ?>
         </div>

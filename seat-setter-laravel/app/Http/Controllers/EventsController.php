@@ -3,14 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Event;
+use App\Models\Guest;
+use App\Models\Group;
+use App\Models\Table;
 
 class EventsController extends Controller
 {
     public function list()
     {
-        return view('events.list',[
-            'events' => Event::all()
+        // Get the currently authenticated user's ID
+        $user_id = Auth::id();
+
+        // Retrieve events for the user
+        $events = Event::where('user_id', $user_id)->get();
+
+        // Return the view with the events
+        return view('events.list', ['events' => $events]);
+
+    }
+
+    public function detail(Event $event)
+    {
+        return view('events.detail', [
+            'event' => $event
         ]);
     }
 
