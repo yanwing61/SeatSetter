@@ -6,7 +6,7 @@
         
         <h2>Edit Table: <?= $table->table_id ?></h2>
 
-        <form method="post" action="/console/tables/edit/<?= $table->table_id ?>" novalidate>
+        <form method="post" action="/console/events/detail/{{$event->event_id}}/tables/edit/<?= $table->table_id ?>" novalidate>
             @csrf
 
             <div>
@@ -25,7 +25,7 @@
 
         </form>
 
-        <a href="/console/tables/list">Back to Table List</a>
+        <a href="/console/events/detail/{{$event->event_id}}/tables/list">Back to Table List</a>
 
     </section>
 

@@ -55,14 +55,15 @@ class GroupsController extends Controller
 
     }
 
-    public function editForm(Group $group)
+    public function editForm(Event $event, Group $group)
     {
         return view('groups.edit',[
-            'group' => $group
+            'group' => $group,
+            'event' => $event
         ]);
     }
 
-    public function edit(Group $group)
+    public function edit(Event $event, Group $group)
     {
         $attributesName = request()->validate([
             'group_name' => 'required|unique:groups|max:255',

@@ -4,31 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Table;
+use App\Models\Event;
 
 class TablesController extends Controller
 {
-    public function list()
+    public function list(Event $event)
     {
+        $tables = Table::where('event_id', $event->event_id)->get();
+        
         return view('tables.list',[
-            'tables' => Table::all()
+            'tables' => $tables,
+            'event' => $event
         ]);
     }
 
-    public function delete(Table $table)
+    public function delete(Event $event, Table $table)
     {
        $table->delete();
-
-       return redirect('/console/tables/list')
+   
+       return redirect("/console/events/detail/{$event->event_id}/tables/list")
             ->with('message', 'Table has been deleted.');
 
     }
 
-    public function addForm()
+    public function addForm(Event $event)
     {
-        return view('tables.add');
+        return view('tables.add', [
+            'event' => $event
+        ]);
     }
 
-    public function add()
+    public function add(Event $event)
     {
 
         $attributesGuest = request()->validate([
@@ -37,32 +43,33 @@ class TablesController extends Controller
 
         $table = new Table();
         $table->num_of_guest = $attributesGuest['num_of_guest'];
-        $table->event_id = auth()->id();
+        $table->event_id = $event->event_id;
         $table->save();
 
-        return redirect('/console/tables/list')
+        return redirect("/console/events/detail/{$event->event_id}/tables/list")
             ->with('message', 'Table has been added.');
 
     }
 
-    public function editForm(Table $table)
+    public function editForm(Event $event, Table $table)
     {
         return view('tables.edit',[
-            'table' => $table
+            'table' => $table,
+            'event' => $event
         ]);
     }
 
-    public function edit(Table $table)
+    public function edit(Event $event, Table $table)
     {
         $attributesGuest = request()->validate([
             'num_of_guest' => 'required',
         ]);
 
         $table->num_of_guest = $attributesGuest['num_of_guest'];
-        $table->event_id = auth()->id();
+        $group->event_id = $event->event_id;
         $table->save();
 
-        return redirect('/console/tables/list')
+        return redirect("/console/events/detail/{$event->event_id}/tables/list")
             ->with('message', 'Table has been edited.');
     }
 }

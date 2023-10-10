@@ -6,7 +6,7 @@
         
         <h2>Edit Group: <?= $group->group_name ?></h2>
 
-        <form method="post" action="/console/groups/edit/<?= $group->group_id ?>" novalidate>
+        <form method="post" action="/console/events/detail/{{$event->event_id}}/groups/edit/<?= $group->group_id ?>" novalidate>
             @csrf
 
             <div>
@@ -45,7 +45,7 @@
 
         </form>
 
-        <a href="/console/groups/list">Back to Group List</a>
+        <a href="/console/events/detail/{{$event->event_id}}/groups/list">Back to Group List</a>
 
     </section>
 

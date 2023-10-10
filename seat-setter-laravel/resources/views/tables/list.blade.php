@@ -4,8 +4,8 @@
 
     <section>
         
-            <h2>Manage Tables</h2>
-            <a href="/console/tables/add"> + New Table</a>
+            <h2>{{$event->event_name}} - Manage Tables</h2>
+            <a href="/console/events/detail/{{$event->event_id}}/tables/add"> + New Table</a>
             
             <table class="table table-hover">
                 <tr>
@@ -18,8 +18,8 @@
                 <tr>
                     <td>{{$table->table_id}}</td>
                     <td>{{$table->num_of_guest}}</td>
-                    <td><a href="/console/tables/edit/{{$table->table_id}}">Edit</a></td>
-                    <td><a href="/console/tables/delete/{{$table->table_id}}">Delete</a></td>
+                    <td><a href="/console/events/detail/{{$event->event_id}}/tables/edit/{{$table->table_id}}">Edit</a></td>
+                    <td><a href="/console/events/detail/{{$event->event_id}}/tables/delete/{{$table->table_id}}">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
             </table>
