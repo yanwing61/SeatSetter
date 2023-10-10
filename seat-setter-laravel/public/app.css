@@ -18,7 +18,7 @@ body{
     padding: 3em 5em;
 }
 
-h1, h2, h3, h4, h5, summary, .card-title{
+h1, h2, h3, h4, h5{
     font-family: 'Istok Web', sans-serif;
     font-weight: 700;
     color: var(--pri-color);
@@ -29,7 +29,7 @@ main, footer{
 }
 
 section{
-    margin-bottom: 1em;
+    margin: 3em 0;
 }
 
 #about, #projects, #education, #more{
@@ -45,8 +45,8 @@ ul{
 }
 
 #message svg {
-    width: 24px; 
-    height: 24px;
+    width: 1em; 
+    height: 1em;
 }
 
 .no-border{

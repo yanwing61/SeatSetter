@@ -6,7 +6,7 @@ jQuery(window).on("load",function(){
     // Make the element with ID 'droppable' droppable
     $(".droppable").droppable({
         drop: function(event, ui) {
-            console.log('drop!');
+            // console.log('drop!');
             $(this)
                 .addClass("ui-state-highlight")
                 .find("p")
