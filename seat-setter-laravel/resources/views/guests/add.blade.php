@@ -40,28 +40,29 @@
             </div>
 
             <div>
+
             <label for="group_id">Group:</label>
             <select name="group_id" id="group_id">
-                <option>Please select</option>
-                @foreach ($groups as $group)
-                    <option value="{{$group->id}}"
-                        {{$group->id == old('group_id') ? 'selected' : ''}}>
-                        {{$group->group_name}}
-                    </option>
-                @endforeach
+                    <option value="" {{ old('group_id', '') == '' ? 'selected' : '' }}>Please select</option>
+                    @foreach ($groups as $group)
+                        <option value="{{$group->group_id}}">
+                            {{$group->group_id}} - 
+                            {{$group->group_name}}
+                        </option>
+                    @endforeach
             </select>
-            @if ($errors->first('group_id'))
-                <br>
-                <span>{{$errors->first('group_id')}}</span>
-            @endif
+                @if ($errors->first('group_id'))
+                    <br>
+                    <span>{{$errors->first('group_id')}}</span>
+                @endif
             </div>
 
             <div>
             <label for="table_id">Table:</label>
             <select name="table_id" id="table_id">
-                <option>Please select</option>
+                <option value="">Please select</option>
                 @foreach ($tables as $table)
-                    <option value="{{$table->id}}"
+                    <option value="{{$table->table_id}}"
                         {{$table->id == old('table_id') ? 'selected' : ''}}>
                         {{$table->table_id}}
                     </option>
