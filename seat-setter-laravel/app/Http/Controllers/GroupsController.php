@@ -4,31 +4,37 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Group;
+use App\Models\Event;
 
 class GroupsController extends Controller
 {
-    public function list()
+    public function list(Event $event)
     {
-        return view('groups.list',[
-            'groups' => Group::all()
+        $groups = Group::where('event_id', $event->event_id)->get();
+    
+        return view('groups.list', [
+            'groups' => $groups,
+            'event' => $event
         ]);
     }
 
-    public function delete(Group $group)
+    public function delete(Event $event, Group $group)
     {
        $group->delete();
 
-       return redirect('/console/groups/list')
+       return redirect("/console/events/detail/{$event->event_id}/groups/list")
             ->with('message', 'Group has been deleted.');
 
     }
 
-    public function addForm()
+    public function addForm(Event $event)
     {
-        return view('groups.add');
+        return view('groups.add', [
+            'event' => $event
+        ]);
     }
 
-    public function add()
+    public function add(Event $event)
     {
         $attributesName = request()->validate([
             'group_name' => 'required|unique:groups|max:255',
@@ -41,10 +47,10 @@ class GroupsController extends Controller
         $group = new Group();
         $group->group_name = $attributesName['group_name'];
         $group->same_table = $attributesSame['same_table'];
-        $group->event_id = auth()->id();
+        $group->event_id = $event->event_id;
         $group->save();
 
-        return redirect('/console/groups/list')
+        return redirect("/console/events/detail/{$event->event_id}/groups/list")
             ->with('message', 'Group has been added.');
 
     }
@@ -68,10 +74,10 @@ class GroupsController extends Controller
 
         $group->group_name = $attributesName['group_name'];
         $group->same_table = $attributesSame['same_table'];
-        $group->event_id = auth()->id();
+        $group->event_id = $event->event_id;
         $group->save();
 
-        return redirect('/console/groups/list')
+        return redirect("/console/events/detail/{$event->event_id}/groups/list")
             ->with('message', 'Group has been edited.');
     }
 }

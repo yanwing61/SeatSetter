@@ -13,5 +13,15 @@ class Event extends Model
             return $this->belongsTo(User::class, 'user_id');
         }
 
+    public function groups()
+    {
+        return $this->hasMany(Group::class, 'event_id'); 
+    }
+
+    public function tables()
+    {
+        return $this->hasMany(Table::class, 'table_id'); 
+    }
+
     use HasFactory;
 }

@@ -4,9 +4,9 @@
 
     <section>
         
-        <h2>Add Groups</h2>
+        <h2>{{$event->event_name}} - Add Groups</h2>
 
-        <form method="post" action="/console/groups/add" novalidate>
+        <form method="post" action="/console/events/detail/{{$event->event_id}}/groups/add" novalidate>
             @csrf
 
             <div>
@@ -43,7 +43,7 @@
 
         </form>
 
-        <a href="/console/groups/list">Back to Group List</a>
+        <a href="/console/events/detail/{{$event->event_id}}/groups/list">Back to Group List</a>
 
     </section>
 
