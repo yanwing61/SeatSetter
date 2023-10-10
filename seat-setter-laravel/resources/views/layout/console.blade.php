@@ -20,7 +20,7 @@
                         <a href="/console/dashboard">Dashboard</a>
                     </li> 
                     <li class="nav-item">
-                        <a href="/">FAQ</a>
+                        <a href="/console/about">About</a>
                     </li> 
                     <li class="nav-item">
                         <a href="/console/logout">Log Out</a>

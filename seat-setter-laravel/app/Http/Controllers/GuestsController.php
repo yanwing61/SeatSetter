@@ -39,8 +39,8 @@ class GuestsController extends Controller
             'guest_fname' => 'required',
             'guest_lname' => 'required',
             'guest_remarks' => 'nullable',
-            'group_id' => 'nullable',
-            'table_id' => 'nullable',
+            'group_id' => 'required',
+            'table_id' => 'required',
         ]);
 
         $guest = new Guest();

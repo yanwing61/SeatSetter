@@ -12,6 +12,11 @@ class ConsoleController extends Controller
         return view('console.dashboard');
     }
 
+    public function about()
+    {
+        return view('console.about');
+    }
+
     public function loginForm()
     {
         return view('console.login');
