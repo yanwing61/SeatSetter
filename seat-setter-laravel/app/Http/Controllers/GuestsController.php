@@ -35,7 +35,6 @@ class GuestsController extends Controller
 
     public function add()
     {
-
         $attributes = request()->validate([
             'guest_fname' => 'required',
             'guest_lname' => 'required',

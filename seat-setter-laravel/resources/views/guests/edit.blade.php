@@ -4,14 +4,14 @@
 
     <section>
         
-        <h2>Add Guest</h2>
+        <h2>Edit Guest</h2>
 
-        <form method="post" action="/console/guests/add" novalidate>
+        <form method="post" action="/console/guests/edit/{{$guest->guest_id}}" novalidate>
             @csrf
 
             <div>
             <label for="guest_fname">First Name:</label>
-            <input type="text" name="guest_fname" id="guest_fname" value="{{old('guest_fname')}}" required>
+            <input type="text" name="guest_fname" id="guest_fname" value="{{old('guest_fname', $guest->guest_fname)}}" required>
             
             @if ($errors->first('guest_fname'))
                 <br>
@@ -21,7 +21,7 @@
 
             <div>
             <label for="guest_lname">First Name:</label>
-            <input type="text" name="guest_lname" id="guest_lname" value="{{old('guest_lname')}}" required>
+            <input type="text" name="guest_lname" id="guest_lname" value="{{old('guest_lname', $guest->guest_lname)}}" required>
             
             @if ($errors->first('guest_lname'))
                 <br>
@@ -31,7 +31,7 @@
 
             <div>
             <label for="guest_remarks">Remarks:</label>
-            <input type="text" name="guest_remarks" id="guest_remarks" value="{{old('guest_remarks')}}">
+            <input type="text" name="guest_remarks" id="guest_remarks" value="{{old('guest_remarks, $guest->guest_remarks')}}">
             
             @if ($errors->first('guest_remarks'))
                 <br>
@@ -45,7 +45,7 @@
                 <option>Please select</option>
                 @foreach ($groups as $group)
                     <option value="{{$group->id}}"
-                        {{$group->id == old('group_id') ? 'selected' : ''}}>
+                        {{$group->id == old('group_id', $guest->group_id) ? 'selected' : ''}}>
                         {{$group->group_name}}
                     </option>
                 @endforeach
@@ -62,7 +62,7 @@
                 <option>Please select</option>
                 @foreach ($tables as $table)
                     <option value="{{$table->id}}"
-                        {{$table->id == old('table_id') ? 'selected' : ''}}>
+                        {{$table->id == old('table_id', $guest->table_id) ? 'selected' : ''}}>
                         {{$table->table_id}}
                     </option>
                 @endforeach
@@ -74,7 +74,7 @@
             </div>
 
 
-            <button type="submit">Add Guest</button>
+            <button type="submit">Edit Guest</button>
 
 
         </form>
