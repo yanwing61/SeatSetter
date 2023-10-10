@@ -72,7 +72,7 @@ class GuestsController extends Controller
             'guest_lname' => 'required',
             'guest_remarks' => 'nullable',
             'group_id' => 'required',
-            'table_id' => 'required',
+            'table_id' => 'nullable',
         ]);
 
         $guest->guest_fname = $attributes['guest_fname'];
