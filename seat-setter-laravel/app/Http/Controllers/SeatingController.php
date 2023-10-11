@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Event;
 use App\Models\Guest;
 use App\Models\Group;
@@ -49,9 +50,6 @@ class SeatingController extends Controller
             DB::rollback(); // If there are any issues, rollback any database changes
             return redirect()->back()->withErrors(['error' => 'Failed to update seating assignments.']);
         }
-
-        $group->event_id = $event->event_id;
-        $group->save();
 
         return redirect("/console/events/detail/{$event->event_id}/seating/preview")
             ->with('message', 'Seating plan has been saved.');

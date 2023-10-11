@@ -45,7 +45,7 @@ jQuery(window).on("load", function() {
     $('form').on('submit', function(e) {
         // Log the final seatingAssignments object to the console
         console.log(seatingAssignments);
-        e.preventDefault();
+        //e.preventDefault();
     });
 
 });

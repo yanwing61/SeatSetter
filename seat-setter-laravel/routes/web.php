@@ -70,6 +70,6 @@ Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm']
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 
 Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'index'])->middleware('auth');;
-Route::get('/console/events/detail/{event:event_id}/seating/save', [SeatingController::class, 'saveForm'])->middleware('auth');
-Route::post('/console/events/detail/{event:event_id}/seating/save', [SeatingController::class, 'save'])->middleware('auth');
+Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'saveForm'])->middleware('auth');
+Route::post('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'save'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'preview'])->middleware('auth');;

@@ -24,7 +24,8 @@
         </div>
     </div>
 
-    <form method="post" action="/console/events/detail/{event:event_id}/seating/save" novalidate>
+    <form method="post" action="/console/events/detail/{{$event->event_id}}/seating/preview" novalidate>
+        @csrf
         <input type="hidden" name="seating_assignments" id="seating_assignments" value="">    
         <button type="submit">Save plan</button>
     </form>
