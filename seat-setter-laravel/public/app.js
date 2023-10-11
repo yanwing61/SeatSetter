@@ -2,9 +2,8 @@ jQuery(window).on("load", function() {
     var seatingAssignments = {}; //empty object to store the seat assignments
 
     $(".draggable").draggable({
-        revert: "invalid",  // Make the guest snap back if not dropped on a table
-        stop: function() {  // This triggers when dragging stops
-            // Remove the guest ID from the assignments if it's not assigned to any table
+        revert: "invalid",  
+        stop: function() {  
             var guest_id = $(this).data("name");
             if (!$(this).closest(".droppable").length) {
                 delete seatingAssignments[guest_id];
@@ -18,13 +17,12 @@ jQuery(window).on("load", function() {
             $(this).addClass("ui-state-highlight");
             $(this).find(".msg").html(" - Assigned to this table!");
 
-            // Update the seatingAssignments object
             var guest_id = $(ui.draggable).data("name");
             var table_id = $(this).data("name");
-            console.log(guest_id+' & '+table_id);
+            // console.log(guest_id+' & '+table_id);
             
             seatingAssignments[guest_id] = table_id;
-            console.log('Current Seating Assignments:', seatingAssignments);  // Log the entire seatingAssignments object
+            console.log('Current Seating Assignments:', seatingAssignments);  
     
             updateSeatingInput();
         },
@@ -37,7 +35,7 @@ jQuery(window).on("load", function() {
         }
     });
 
-    // This function will serialize the seatingAssignments object and update the hidden input
+    // Serialize the seatingAssignments object and update the hidden input
     function updateSeatingInput() {
         $('#seating_assignments').val(JSON.stringify(seatingAssignments));
     }

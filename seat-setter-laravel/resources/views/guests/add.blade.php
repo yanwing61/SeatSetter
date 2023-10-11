@@ -43,7 +43,7 @@
 
             <label for="group_id">Group:</label>
             <select name="group_id" id="group_id">
-                    <option value="" {{ old('group_id', '') == '' ? 'selected' : '' }}>Please select</option>
+                    <option value="">To be assigned</option>
                     @foreach ($groups as $group)
                         <option value="{{$group->group_id}}">
                             {{$group->group_id}} - 
@@ -60,7 +60,7 @@
             <div>
             <label for="table_id">Table:</label>
             <select name="table_id" id="table_id">
-                <option value="">Please select</option>
+                <option value="">To be assigned</option>
                 @foreach ($tables as $table)
                     <option value="{{$table->table_id}}"
                         {{$table->id == old('table_id') ? 'selected' : ''}}>
