@@ -8,7 +8,7 @@
     <div id="seating-plan-con">
         <div id="names">
             <?php foreach($guests as $guest): ?>
-                <?php if (!$guest->table_id): // Only render guests that aren't assigned to a table ?>
+                <?php if (!$guest->table_id):  ?>
                     <div id="{{$guest->guest_id}}" class="draggable ui-widget-content" data-name="{{$guest->guest_id}}">
                         <p>{{$guest->guest_fname}} {{$guest->guest_lname}}</p>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="droppable ui-widget-header" data-name="{{$table->table_id}}">
                     <div>Table {{$table->table_id}} : {{$table->num_of_guest}} guests <span class="msg"></span></div>
 
-                    <?php // Render guests assigned to this table inside the table div 
+                    <?php  
                     foreach($guests as $guest): 
                         if ($guest->table_id == $table->table_id): ?>
                             <div id="{{$guest->guest_id}}" class="draggable ui-widget-content" data-name="{{$guest->guest_id}}">

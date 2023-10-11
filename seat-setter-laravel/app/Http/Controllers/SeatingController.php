@@ -43,7 +43,10 @@ class SeatingController extends Controller
         try {
             foreach ($seatingAssignments as $guest_id => $table_id) {
                 // For each guest, update their table_id
-                Guest::where('guest_id', $guest_id)->update(['table_id' => $table_id]);
+                // Guest::where('guest_id', $guest_id)->update(['table_id' => $table_id]);
+                $guest = Guest::find($guest_id);
+                $guest->table_id = $table_id;
+                $guest->save();
             }
             DB::commit(); // Commit the transaction if all updates are successful
         } catch (\Exception $e) {

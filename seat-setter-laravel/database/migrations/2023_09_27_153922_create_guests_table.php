@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id('guest_id');
             $table->string('guest_fname');
             $table->string('guest_lname');
-            $table->string('guest_remarks');
-            $table->foreignId('group_id');
-            $table->foreignId('table_id');
+            $table->string('guest_remarks')->nullable();
+            $table->foreignId('group_id')->nullable();
+            $table->foreignId('table_id')->nullable();
             $table->timestamps();
         });
     }
