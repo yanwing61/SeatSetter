@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Guest;
+use App\Models\Event;
 use App\Models\Group;
 use App\Models\Table;
 
 class GuestsController extends Controller
 {
-    public function list()
+    public function list(Event $event)
     {
         return view('guests.list',[
-            'guests' => Guest::all()
+            'guests' => Guest::all(),
+            'event' => $event
         ]);
     }
 
@@ -39,8 +41,8 @@ class GuestsController extends Controller
             'guest_fname' => 'required',
             'guest_lname' => 'required',
             'guest_remarks' => 'nullable',
-            'group_id' => 'required',
-            'table_id' => 'required',
+            'group_id' => 'nullable',
+            'table_id' => 'nullable',
         ]);
 
         $guest = new Guest();

@@ -20,7 +20,7 @@
             </div>
 
             <div>
-            <label for="guest_lname">First Name:</label>
+            <label for="guest_lname">Last Name:</label>
             <input type="text" name="guest_lname" id="guest_lname" value="{{old('guest_lname')}}" required>
             
             @if ($errors->first('guest_lname'))

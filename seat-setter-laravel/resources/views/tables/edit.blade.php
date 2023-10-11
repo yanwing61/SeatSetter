@@ -11,7 +11,7 @@
 
             <div>
                 <label for="num_of_guest">Number of Guests:</label>
-                <input type="number" id="num_of_guest" name="num_of_guest" value="{{old('num_of_guest', $table->table_id)}}" required>
+                <input type="number" id="num_of_guest" name="num_of_guest" value="{{old('num_of_guest', $table->num_of_guest)}}" required>
 
             
                 @if ($errors->first('num_of_guest'))

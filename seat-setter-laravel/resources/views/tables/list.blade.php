@@ -5,6 +5,7 @@
     <section>
         
             <h2>{{$event->event_name}} - Manage Tables</h2>
+            <a href="/console/events/detail/{{$event->event_id}}"> Back to Event Page</a>
             <a href="/console/events/detail/{{$event->event_id}}/tables/add"> + New Table</a>
             
             <table class="table table-hover">

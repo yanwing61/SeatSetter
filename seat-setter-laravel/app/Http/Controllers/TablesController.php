@@ -11,8 +11,8 @@ class TablesController extends Controller
     public function list(Event $event)
     {
         $tables = Table::where('event_id', $event->event_id)->get();
-        
-        return view('tables.list',[
+    
+        return view('tables.list', [
             'tables' => $tables,
             'event' => $event
         ]);
@@ -21,7 +21,7 @@ class TablesController extends Controller
     public function delete(Event $event, Table $table)
     {
        $table->delete();
-   
+
        return redirect("/console/events/detail/{$event->event_id}/tables/list")
             ->with('message', 'Table has been deleted.');
 
@@ -36,13 +36,12 @@ class TablesController extends Controller
 
     public function add(Event $event)
     {
-
-        $attributesGuest = request()->validate([
+        $attributes = request()->validate([
             'num_of_guest' => 'required',
         ]);
 
         $table = new Table();
-        $table->num_of_guest = $attributesGuest['num_of_guest'];
+        $table->num_of_guest = $attributes['num_of_guest'];
         $table->event_id = $event->event_id;
         $table->save();
 
@@ -61,12 +60,16 @@ class TablesController extends Controller
 
     public function edit(Event $event, Table $table)
     {
-        $attributesGuest = request()->validate([
+        if (!$event || !$table) {
+            abort(404, 'Resource not found');
+        }
+    
+        $attributes = request()->validate([
             'num_of_guest' => 'required',
         ]);
 
-        $table->num_of_guest = $attributesGuest['num_of_guest'];
-        $group->event_id = $event->event_id;
+        $table->num_of_guest = $attributes['num_of_guest'];
+        $table->event_id = $event->event_id;
         $table->save();
 
         return redirect("/console/events/detail/{$event->event_id}/tables/list")

@@ -5,6 +5,7 @@
     <section>
         
             <h2>{{$event->event_name}} - Manage Groups</h2>
+            <a href="/console/events/detail/{{$event->event_id}}"> Back to Event Page</a>
             <a href="/console/events/detail/{{$event->event_id}}/groups/add"> + New Group</a>
             
             <table class="table table-hover">

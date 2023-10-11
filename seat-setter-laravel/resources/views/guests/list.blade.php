@@ -5,6 +5,7 @@
     <section>
         
             <h2>Manage Guests</h2>
+            <a href="/console/events/detail/{{$event->event_id}}"> Back to Event Page</a>
             <a href="/console/guests/add"> + New Guest</a>
             
             <table class="table table-hover">
