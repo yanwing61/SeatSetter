@@ -52,18 +52,15 @@ class TablesController extends Controller
 
     public function editForm(Event $event, Table $table)
     {
+        
         return view('tables.edit',[
             'table' => $table,
-            'event' => $event
+            'event' => $event,
         ]);
     }
 
     public function edit(Event $event, Table $table)
     {
-        if (!$event || !$table) {
-            abort(404, 'Resource not found');
-        }
-    
         $attributes = request()->validate([
             'num_of_guest' => 'required',
         ]);

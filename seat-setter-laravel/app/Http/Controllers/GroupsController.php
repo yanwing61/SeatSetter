@@ -54,6 +54,7 @@ class GroupsController extends Controller
 
     public function editForm(Event $event, Group $group)
     {
+  
         return view('groups.edit',[
             'group' => $group,
             'event' => $event

@@ -48,12 +48,13 @@ Route::post('/console/events/detail/{event:event_id}/groups/add', [GroupsControl
 Route::get('/console/events/detail/{event:event_id}/groups/edit/{group:group_id}', [GroupsController::class, 'editForm'])->where('group', '[0-9]+')->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/groups/edit/{group:group_id}', [GroupsController::class, 'edit'])->where('group', '[0-9]+')->middleware('auth');
 
+//TABLE
 Route::get('/console/events/detail/{event:event_id}/tables/list', [TablesController::class, 'list'])->middleware('auth');
-Route::get('/console/events/detail/{event:event_id}/tables/delete/{table:table_id}', [TablesController::class, 'delete'])->where('table', '[0-9]+')->middleware('auth');
+Route::get('/console/events/detail/{event:event_id}/tables/delete/{tables:table_id}', [TablesController::class, 'delete'])->where('table','[0-9]+')->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/tables/add', [TablesController::class, 'addForm'])->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/tables/add', [TablesController::class, 'add'])->middleware('auth');
-Route::get('/console/events/detail/{event:event_id}/tables/edit/{table:table_id}', [TablesController::class, 'editForm'])->where('table', '[0-9]+')->middleware('auth');
-Route::post('/console/events/detail/{event:event_id}/tables/edit/{table:table_id}', [TablesController::class, 'edit'])->where('table', '[0-9]+')->middleware('auth');
+Route::get('/console/events/detail/{event:event_id}/tables/edit/{tables:table_id}', [TablesController::class, 'editForm'])->where('table','[0-9]+')->middleware('auth');
+Route::post('/console/events/detail/{event:event_id}/tables/edit/{tables:table_id}', [TablesController::class, 'edit'])->where('table','[0-9]+')->middleware('auth');
 
 Route::get('/console/guests/list', [GuestsController::class, 'list'])->middleware('auth');
 Route::get('/console/guests/delete/{guest:guest_id}', [GuestsController::class, 'delete'])->where('guest', '[0-9]+')->middleware('auth');
