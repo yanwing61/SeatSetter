@@ -1,5 +1,5 @@
 jQuery(window).on("load", function() {
-    var seatingAssignments = {}; //empty object to store the assignment
+    var seatingAssignments = {}; //empty object to store the seat assignments
 
     $(".draggable").draggable({
         revert: "invalid",  // Make the guest snap back if not dropped on a table
@@ -22,9 +22,13 @@ jQuery(window).on("load", function() {
             var guest_id = $(ui.draggable).data("name");
             var table_id = $(this).data("name");
             console.log(guest_id+' & '+table_id);
+            
             seatingAssignments[guest_id] = table_id;
+            console.log('Current Seating Assignments:', seatingAssignments);  // Log the entire seatingAssignments object
+    
             updateSeatingInput();
         },
+        
         out: function(event, ui) {
             if (!$(this).has(".draggable").length) {
                 $(this).removeClass("ui-state-highlight");
@@ -37,4 +41,11 @@ jQuery(window).on("load", function() {
     function updateSeatingInput() {
         $('#seating_assignments').val(JSON.stringify(seatingAssignments));
     }
+
+    $('form').on('submit', function(e) {
+        // Log the final seatingAssignments object to the console
+        console.log(seatingAssignments);
+        e.preventDefault();
+    });
+
 });

@@ -31,21 +31,43 @@ class SeatingController extends Controller
         ]);
     }
 
-    public function save(Event $event)
+    public function save(Event $event, Request $request)
     {
-        $attributes = request()->validate([
-            'table_id' => 'required',
-        ]);
+        // Decode the JSON string into an associative array
+        $seatingAssignments = json_decode($request->input('seating_assignments'), true);
 
-        $guest->table_id = $attributes['table_id'];
+        // Start a database transaction to ensure all updates succeed or none do
+        DB::beginTransaction();
+
+        try {
+            foreach ($seatingAssignments as $guest_id => $table_id) {
+                // For each guest, update their table_id
+                Guest::where('guest_id', $guest_id)->update(['table_id' => $table_id]);
+            }
+            DB::commit(); // Commit the transaction if all updates are successful
+        } catch (\Exception $e) {
+            DB::rollback(); // If there are any issues, rollback any database changes
+            return redirect()->back()->withErrors(['error' => 'Failed to update seating assignments.']);
+        }
+
+        $group->event_id = $event->event_id;
         $group->save();
 
-        return redirect("/console/events/detail/{$event->event_id}/groups/list")
-            ->with('message', 'Group has been added.');
-
+        return redirect("/console/events/detail/{$event->event_id}/seating/preview")
+            ->with('message', 'Seating plan has been saved.');
     }
 
 
+    public function preview(Event $event)
+    {
+    
+        return view('seating.preview',[
+            'event' => $event,
+            'guests' => Guest::all(),
+            'groups' => Group::all(),
+            'tables' => Table::all(),
+        ]);
+    }
 
 
 }
