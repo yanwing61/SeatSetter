@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <h1>SeatSetter Dashboard</h1>
+        <h1>SeatSetter</h1>
 
         <?php if(Auth::check()): ?>
             <nav> 

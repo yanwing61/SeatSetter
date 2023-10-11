@@ -57,13 +57,14 @@ form span{
     color: red;
 }
 
+/* JQUERY */
+
 #seating-plan-con{
     display: flex;
     flex-direction: column;
 }
 
 .draggable {
-    /* width: 100px; */
     height: 30px;
     padding: 5px;
     float: left;
@@ -71,7 +72,7 @@ form span{
 }
 
 .droppable {
-    width: 500px;
+    width: 300px;
     height: 300px;
     padding: 0.5em;
     float: left;
@@ -79,7 +80,7 @@ form span{
     border-radius: 10px;
 }
 
-/* HEADER & NAV */
+/* NAV */
 
 #mobile-menu{
     display: none;
@@ -91,13 +92,13 @@ form span{
     gap: 1em;
 }
 
-nav a{
+nav a, button{
     padding-left: 10px;
     padding-right: 10px;
     color: var(--pri-color);
 }
 
-nav a:hover{
+nav a:hover, button:hover{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);
@@ -118,7 +119,7 @@ nav a:hover{
     padding: 0.1em;
 }
 
-section a{
+section a, button{
     display: block;
     color:  var(--text-color);
     margin: 0.5em 0;
@@ -129,7 +130,12 @@ section a{
     border: 3px solid var(--text-color);
 }
 
-section a:hover{
+button{
+    width: 100%;
+    background: white;
+}
+
+section a:hover, button:hover{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);

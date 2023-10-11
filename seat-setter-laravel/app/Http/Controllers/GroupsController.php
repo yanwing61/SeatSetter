@@ -36,17 +36,14 @@ class GroupsController extends Controller
 
     public function add(Event $event)
     {
-        $attributesName = request()->validate([
+        $attributes = request()->validate([
             'group_name' => 'required|unique:groups|max:255',
-        ]);
-
-        $attributesSame = request()->validate([
             'same_table' => 'required',
         ]);
 
         $group = new Group();
-        $group->group_name = $attributesName['group_name'];
-        $group->same_table = $attributesSame['same_table'];
+        $group->group_name = $attributes['group_name'];
+        $group->same_table = $attributes['same_table'];
         $group->event_id = $event->event_id;
         $group->save();
 
@@ -65,16 +62,13 @@ class GroupsController extends Controller
 
     public function edit(Event $event, Group $group)
     {
-        $attributesName = request()->validate([
+        $attributes = request()->validate([
             'group_name' => 'required|unique:groups|max:255',
-        ]);
-
-        $attributesSame = request()->validate([
             'same_table' => 'required',
         ]);
 
-        $group->group_name = $attributesName['group_name'];
-        $group->same_table = $attributesSame['same_table'];
+        $group->group_name = $attributes['group_name'];
+        $group->same_table = $attributes['same_table'];
         $group->event_id = $event->event_id;
         $group->save();
 

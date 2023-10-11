@@ -3,6 +3,8 @@
 @section ('content')
     
     <section>
+
+    <h2>{{$event->event_name}} Seating Plan</h2>
     <div id="seating-plan-con">
         <div id="names">
             <?php foreach($guests as $guest): ?>
@@ -22,9 +24,13 @@
         </div>
     </div>
 
-    <form method="post" action="/console/guests/edit/{{$guest->guest_id}}" novalidate>
-        <button type="submit">Edit Guest</button>
+    <form method="post" action="/console/events/detail/{event:event_id}/seating/save" novalidate>
+        <input type="hidden" name="seating_assignments" id="seating_assignments" value="">    
+        <button type="submit">Save plan</button>
     </form>
+
+    <a href="/">Export plan as CSV</a>
+    <a href="/">Export plan as PDF</a>
 
     </section>
 
