@@ -14,13 +14,17 @@
 
         <div id="tables">
             <?php foreach($tables as $table): ?>
-                <div id="{{$table->table_id}}" class="droppable ui-widget-header" data-name="{{$table->table_id}}">
-                    <p>Table {{$table->table_id}} : {{$table->num_of_guest}} guests</p>
-                    <p class="msg"></p>
+                <div id="table1" class="droppable ui-widget-header" data-name="{{$table->table_id}}">
+                    <div>Table {{$table->table_id}} : {{$table->num_of_guest}} guests <span class="msg"></span></div>
+                    
                 </div>
             <?php endforeach; ?>
         </div>
     </div>
+
+    <form method="post" action="/console/guests/edit/{{$guest->guest_id}}" novalidate>
+        <button type="submit">Edit Guest</button>
+    </form>
 
     </section>
 

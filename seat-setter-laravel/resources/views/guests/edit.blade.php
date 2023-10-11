@@ -73,9 +73,7 @@
             @endif
             </div>
 
-
             <button type="submit">Edit Guest</button>
-
 
         </form>
 

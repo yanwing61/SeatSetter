@@ -10,17 +10,6 @@ use App\Models\Table;
 
 class SeatingController extends Controller
 {
-
-    public function selectEvent()
-    {
-        return view('seating.seating',[
-            'events' => Event::all(),
-            'guests' => Guest::all(),
-            'groups' => Group::all(),
-            'tables' => Table::all(),
-        ]);
-    }
-
     public function index()
     {
         return view('seating.seating',[

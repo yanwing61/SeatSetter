@@ -55,15 +55,6 @@ Route::post('/console/events/detail/{event:event_id}/tables/add', [TablesControl
 Route::get('/console/events/detail/{event:event_id}/tables/edit/{table:table_id}', [TablesController::class, 'editForm'])->where('table', '[0-9]+')->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/tables/edit/{table:table_id}', [TablesController::class, 'edit'])->where('table', '[0-9]+')->middleware('auth');
 
-
-// basic CURD
-// Route::get('/console/groups/list', [GroupsController::class, 'list'])->middleware('auth');
-// Route::get('/console/groups/delete/{group:group_id}', [GroupsController::class, 'delete'])->where('group', '[0-9]+')->middleware('auth');
-// Route::get('/console/groups/add', [GroupsController::class, 'addForm'])->middleware('auth');
-// Route::post('/console/groups/add', [GroupsController::class, 'add'])->middleware('auth');
-// Route::get('/console/groups/edit/{group:group_id}', [GroupsController::class, 'editForm'])->where('group', '[0-9]+')->middleware('auth');
-// Route::post('/console/groups/edit/{group:group_id}', [GroupsController::class, 'edit'])->where('group', '[0-9]+')->middleware('auth');
-
 Route::get('/console/guests/list', [GuestsController::class, 'list'])->middleware('auth');
 Route::get('/console/guests/delete/{guest:guest_id}', [GuestsController::class, 'delete'])->where('guest', '[0-9]+')->middleware('auth');
 Route::get('/console/guests/add', [GuestsController::class, 'addForm'])->middleware('auth');
@@ -78,4 +69,6 @@ Route::post('/console/users/add', [UsersController::class, 'add'])->middleware('
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 
-Route::get('/console/seating/seating', [SeatingController::class, 'index']);
+Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'index']);
+Route::get('/console/events/detail/{event:event_id}/seating/save', [SeatingController::class, 'saveForm'])->middleware('auth');
+Route::post('/console/events/detail/{event:event_id}/seating/save', [SeatingController::class, 'save'])->middleware('auth');

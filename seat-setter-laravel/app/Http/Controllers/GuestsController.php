@@ -10,11 +10,11 @@ use App\Models\Table;
 
 class GuestsController extends Controller
 {
-    public function list(Event $event)
+    public function list()
     {
+        
         return view('guests.list',[
             'guests' => Guest::all(),
-            'event' => $event
         ]);
     }
 
