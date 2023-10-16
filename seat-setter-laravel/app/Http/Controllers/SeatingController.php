@@ -17,23 +17,27 @@ class SeatingController extends Controller
     public function index(Event $event)
     {
     
+        $tables = Table::where('event_id', $event->event_id)->get();
+        //$guests = Guest::where('event_id', $event->event_id)->get();
+        $groups = Group::where('event_id', $event->event_id)->get();
+
         return view('seating.seating',[
             'event' => $event,
+            'tables' => $tables,
             'guests' => Guest::all(),
-            'groups' => Group::all(),
-            'tables' => Table::all(),
+            'groups' => $groups,
         ]);
     }
 
-    public function saveForm(Event $event)
-    {
-        return view('seating.seating', [
-            'event' => $event,
-            'guests' => Guest::all(),
-            'groups' => Group::all(),
-            'tables' => Table::all(),
-        ]);
-    }
+    // public function saveForm(Event $event)
+    // {
+    //     return view('seating.seating', [
+    //         'event' => $event,
+    //         'guests' => Guest::all(),
+    //         'groups' => Group::all(),
+    //         'tables' => Table::all(),
+    //     ]);
+    // }
 
     public function save(Event $event, Request $request)
     {

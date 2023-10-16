@@ -2,7 +2,6 @@
 
 .draggable {
     height: 30px;
-    min-width: 50px;
     padding: 5px;
     margin: 5px;
 }
@@ -32,7 +31,7 @@
 
     <div id="tables">
         <?php foreach($tables as $table): ?>
-            <div class="droppable ui-widget-header" data-name="{{$table->table_id}}">
+            <div class="droppable ui-widget-header" data-name="{{$table->table_id}}" data-limit="{{ $table->num_of_guest }}">
                 <div>Table {{$table->table_id}} : {{$table->num_of_guest}} guests <span class="msg"></span></div>
 
                 <?php  
