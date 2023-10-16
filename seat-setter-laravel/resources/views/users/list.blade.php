@@ -4,8 +4,8 @@
 
     <section>
         
-            <h2>Manage Users</h2>
-            <a href="/console/users/add"> + New User</a>
+            <h2>Manage Event Planners Accounts</h2>
+            <a href="/console/users/add"> + New Event Planner</a>
             
             <table class="table table-hover">
                 <tr>

@@ -4,7 +4,7 @@
 
     <section>
         
-        <h2>Edit User</h2>
+        <h2>Edit Event Planner</h2>
 
         <form method="post" action="/console/users/edit/{{$user->id}}" novalidate>
             @csrf
@@ -39,12 +39,12 @@
                 @endif
             </div>
 
-            <button type="submit">Edit User</button>
+            <button type="submit">Edit Event Planner</button>
 
 
         </form>
 
-        <a href="/console/users/list">Back to User List</a>
+        <a href="/console/users/list">Back to Event Planner List</a>
 
     </section>
 

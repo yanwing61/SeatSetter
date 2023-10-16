@@ -4,7 +4,7 @@
 
     <section>
         
-        <h2>Add User</h2>
+        <h2>Add Event Planner</h2>
 
         <form method="post" action="/console/users/add" novalidate>
             @csrf
@@ -39,12 +39,12 @@
                 @endif
             </div>
 
-            <button type="submit">Add User</button>
+            <button type="submit">Add Event Planner</button>
 
 
         </form>
 
-        <a href="/console/users/list">Back to User List</a>
+        <a href="/console/users/list">Back to Event Planner List</a>
 
     </section>
 
