@@ -9,6 +9,7 @@ use App\Models\Guest;
 use App\Models\Group;
 use App\Models\Table;
 use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class SeatingController extends Controller
 {
@@ -65,7 +66,7 @@ class SeatingController extends Controller
     
         return view('seating.preview',[
             'event' => $event,
-            'guests' => Guest::all(),
+            'guests' => Guest::orderBy('table_id')->orderBy('guest_fname')->get(),
             'groups' => Group::all(),
             'tables' => Table::all(),
         ]);
@@ -73,19 +74,26 @@ class SeatingController extends Controller
 
     public function generatePDF($event_id) {
         $dompdf = new Dompdf();
-
+        
         // Load HTML content from a Blade view
         $event = Event::find($event_id);
         $guests = Guest::all();        
         $html = view('seating.preview', compact('event', 'guests'))->render();
         
+        $fileName = "seatingplan.pdf";
+
         $dompdf->loadHtml($html);
 
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->add_info('Title', 'SeatSetter');
 
         $dompdf->render();
 
-        return $dompdf->stream();
+        header("Content-type:application/pdf");
+        header("Content-Disposition: attachment; filename=$fileName.pdf'");
+
+        return $dompdf->stream($fileName,array('Attachment'=>0));
     }
 
 
