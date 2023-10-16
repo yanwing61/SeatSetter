@@ -73,28 +73,38 @@ class SeatingController extends Controller
     }
 
     public function generatePDF($event_id) {
-        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);
+        
+        $dompdf = new Dompdf($options);
         
         // Load HTML content from a Blade view
         $event = Event::find($event_id);
         $guests = Guest::orderBy('table_id')->orderBy('guest_fname')->get();
+        $tables = Table::all();
             
-        $html = view('seating.plancontent', compact('event', 'guests'))->render();
+        $html = "<!DOCTYPE html>
+        <html lang='en'>
+        <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Test PDF</title>
+        </head>
+        <body>" . 
+        view('seating.plancontent', compact('event', 'guests'))->render() . 
+        "</body>
+        </html>";
         
         $fileName = "seatingplan.pdf";
     
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'portrait');
         $dompdf->add_info('Title', 'SeatSetter');
-        try {
-            $dompdf->render();
-        } catch (\Exception $e) {
-            dd($e->getMessage());
-        }
-
+        $dompdf->render();
+       
         $dompdf->stream($fileName);
         exit;
-    
+
         // return response()->stream(
         //     function () use ($dompdf) {
         //         $dompdf->stream();
