@@ -31,7 +31,7 @@
 
         <p id="welcomeUser">
             Welcome! You're logged in as
-            <?= auth()->user()->name ?>
+            <?= auth()->user()->name ?>.
         </p>
 
         <?php else: ?>
