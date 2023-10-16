@@ -18,9 +18,15 @@ class TablesController extends Controller
         ]);
     }
 
-    public function delete(Event $event, Table $table)
+    public function delete(Event $event, $table_id)
     {
-       $table->delete();
+        $table = Table::find($table_id);
+    
+        if (!$table) {
+            abort(404);
+        }
+
+        $table->delete();
 
        return redirect("/console/events/detail/{$event->event_id}/tables/list")
             ->with('message', 'Table has been deleted.');
@@ -50,17 +56,28 @@ class TablesController extends Controller
 
     }
 
-    public function editForm(Event $event, Table $table)
+    public function editForm(Event $event, $table_id)
     {
-        
+        $table = Table::find($table_id);
+    
+        if (!$table) {
+            abort(404);
+        }
+
         return view('tables.edit',[
             'table' => $table,
             'event' => $event,
         ]);
     }
 
-    public function edit(Event $event, Table $table)
+    public function edit(Event $event, $table_id)
     {
+        $table = Table::find($table_id);
+    
+        if (!$table) {
+            abort(404);
+        }
+
         $attributes = request()->validate([
             'num_of_guest' => 'required',
         ]);
