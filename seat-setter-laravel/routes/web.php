@@ -78,3 +78,4 @@ Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingCo
 Route::post('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'save'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'preview'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/seating/preview/generate-pdf', [SeatingController::class, 'generatePDF'])->middleware('auth');
+Route::get('/console/events/detail/{event:event_id}/seating/preview/generate-csv', [SeatingController::class, 'generateCSV'])->middleware('auth');

@@ -9,8 +9,9 @@
 @section ('links')
 
     <section>
-        <a href="/console/events/detail/{{$event->event_id}}/seating/seating">Back to seating plan</a>
-        <a href="/">Export plan as CSV</a>
-        <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-pdf" target="_blank">Export plan as PDF</a>
+        <a href="/console/events/detail/{{$event->event_id}}/seating/seating">Edit seating plan</a>
+        <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-csv" target="_blank">Export list as CSV</a>
+        <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-pdf" target="_blank">Export list as PDF</a>
+        <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-img-pdf" target="_blank">Export seating plan image as PDF</a>
     </section>
 @endsection

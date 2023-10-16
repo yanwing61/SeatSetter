@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 use App\Models\Event;
 use App\Models\Guest;
 use App\Models\Group;
@@ -63,7 +64,6 @@ class SeatingController extends Controller
 
     public function preview(Event $event)
     {
-    
         return view('seating.preview',[
             'event' => $event,
             'guests' => Guest::orderBy('table_id')->orderBy('guest_fname')->get(),
@@ -120,6 +120,28 @@ class SeatingController extends Controller
         // );
     }
     
+    public function generateCSV($event_id) {
+        
+        $event = Event::find($event_id);
+        $guests = Guest::orderBy('table_id')->orderBy('guest_fname')->get();
+        $tables = Table::all();
+        
+        $csvFileName = 'seatingplan.csv';
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
+        ];
 
+        $handle = fopen('php://output', 'w');
+        fputcsv($handle, ['table_id', 'first_name','last_name','group_id','remarks']);
+
+        foreach ($guests as $guest) {
+            fputcsv($handle, [$guest->table_id, $guest->guest_fname, $guest->guest_lname, $guest->group_id, $guest->guest_remarks]);
+        }
+
+        fclose($handle);
+
+        return Response::make('', 200, $headers);
+        }
 
 }
