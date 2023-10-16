@@ -2,7 +2,7 @@
 
 @section ('content')
     <section>
-        <form method="post" action="/console/login" novalidation>
+        <form id="loginForm" method="post" action="/console/login" novalidation>
 
            @csrf
 

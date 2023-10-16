@@ -15,7 +15,7 @@ body{
     font-weight: 400;
     color: var(--text-color);
     box-sizing: border-box;
-    padding: 3em 5em;
+    padding: 0;
 }
 
 h1, h2, h3, h4, h5{
@@ -24,8 +24,14 @@ h1, h2, h3, h4, h5{
     color: var(--pri-color);
 }
 
-main, footer{
-    padding: 3em 5em;
+header, footer{
+    padding: 2em 3em;
+    margin: 0;
+}
+
+main{
+    min-height: 65vh;
+    margin: 2em 3em;
 }
 
 section{
@@ -139,6 +145,14 @@ section a:hover, button:hover{
     background: var(--gradient-base);
     background: var(--gradient-level);
     color: var(--sec-color);
+}
+
+#loginForm{
+    padding: 0 5em;
+}
+
+#loginForm div{
+    margin-bottom: 1em;
 }
 
 /* FOOTER */

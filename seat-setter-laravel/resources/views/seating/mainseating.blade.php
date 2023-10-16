@@ -2,6 +2,7 @@
 
 .draggable {
     height: 30px;
+    min-width: 50px;
     padding: 5px;
     margin: 5px;
 }
