@@ -262,18 +262,6 @@ section a:hover, button:hover{
         position: relative;
     }
 
-    #hero-text{
-        font-size: 2.5em;
-    }
-
-    #headline{
-        font-size: 1.5em;
-    }
-
-    .propic img{
-        max-width: 200px;
-    }
-
     footer .slogan{
         font-size: 2.5em;
     }

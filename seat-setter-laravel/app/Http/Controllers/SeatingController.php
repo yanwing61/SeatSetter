@@ -72,6 +72,30 @@ class SeatingController extends Controller
         ]);
     }
 
+    public function generateCSV($event_id) {
+        
+        $event = Event::find($event_id);
+        $guests = Guest::orderBy('table_id')->orderBy('guest_fname')->get();
+        $tables = Table::all();
+        
+        $csvFileName = 'seatingplan.csv';
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
+        ];
+
+        $handle = fopen('php://output', 'w');
+        fputcsv($handle, ['table_id', 'first_name','last_name','group_id','remarks']);
+
+        foreach ($guests as $guest) {
+            fputcsv($handle, [$guest->table_id, $guest->guest_fname, $guest->guest_lname, $guest->group_id, $guest->guest_remarks]);
+        }
+
+        fclose($handle);
+
+        return Response::make('', 200, $headers);
+    }
+
     public function generatePDF($event_id) {
         $options = new Options();
         $options->setIsRemoteEnabled(true);
@@ -119,29 +143,45 @@ class SeatingController extends Controller
         //     ]
         // );
     }
+
+    public function generateIMGPDF($event_id) {
+        $options = new Options();
+        $options->setIsRemoteEnabled(true);
+        
+        $dompdf = new Dompdf($options);
+        
+        // Load HTML content from a Blade view
+            $event = Event::find($event_id);
+            $guests = Guest::all();
+            $groups = Group::all();
+            $tables = Table::all();
+            
+        $html = "<!DOCTYPE html>
+        <html lang='en'>
+        <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>SeatSetter</title>
+        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN' crossorigin='anonymous'>
+        <link rel='stylesheet' href='https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css'>
+        <link rel='stylesheet' href='/app.css'>
+        </head>
+        <body>" . 
+        view('seating.mainseating', compact('event', 'guests', 'tables'))->render() . 
+        "</body>
+        </html>";
+        
+        $fileName = "seatingplanIMG.pdf";
     
-    public function generateCSV($event_id) {
-        
-        $event = Event::find($event_id);
-        $guests = Guest::orderBy('table_id')->orderBy('guest_fname')->get();
-        $tables = Table::all();
-        
-        $csvFileName = 'seatingplan.csv';
-        $headers = [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="' . $csvFileName . '"',
-        ];
+        $dompdf->loadHtml($html);
+        $dompdf->setPaper('A4', 'portrait');
+        $dompdf->add_info('Title', 'SeatSetter');
+        $dompdf->render();
+       
+        $dompdf->stream($fileName);
+        exit;
+    }
+    
 
-        $handle = fopen('php://output', 'w');
-        fputcsv($handle, ['table_id', 'first_name','last_name','group_id','remarks']);
-
-        foreach ($guests as $guest) {
-            fputcsv($handle, [$guest->table_id, $guest->guest_fname, $guest->guest_lname, $guest->group_id, $guest->guest_remarks]);
-        }
-
-        fclose($handle);
-
-        return Response::make('', 200, $headers);
-        }
 
 }
