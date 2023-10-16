@@ -31,9 +31,7 @@
             </table>
 
         <a href="/">Export plan as CSV</a>
-        <a href="/">Export plan as PDF</a>
-
-
+        <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-pdf">Export plan as PDF</a>
 
     </section>
 

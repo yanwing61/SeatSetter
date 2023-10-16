@@ -48,7 +48,7 @@ Route::post('/console/events/detail/{event:event_id}/groups/add', [GroupsControl
 Route::get('/console/events/detail/{event:event_id}/groups/edit/{group:group_id}', [GroupsController::class, 'editForm'])->where('group', '[0-9]+')->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/groups/edit/{group:group_id}', [GroupsController::class, 'edit'])->where('group', '[0-9]+')->middleware('auth');
 
-//TABLE
+//TABLES
 Route::get('/console/events/detail/{event:event_id}/tables/list', [TablesController::class, 'list'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/tables/delete/{tables:table_id}', [TablesController::class, 'delete'])->where('table','[0-9]+')->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/tables/add', [TablesController::class, 'addForm'])->middleware('auth');
@@ -56,6 +56,7 @@ Route::post('/console/events/detail/{event:event_id}/tables/add', [TablesControl
 Route::get('/console/events/detail/{event:event_id}/tables/edit/{tables:table_id}', [TablesController::class, 'editForm'])->where('table','[0-9]+')->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/tables/edit/{tables:table_id}', [TablesController::class, 'edit'])->where('table','[0-9]+')->middleware('auth');
 
+//GUESTS
 Route::get('/console/guests/list', [GuestsController::class, 'list'])->middleware('auth');
 Route::get('/console/guests/delete/{guest:guest_id}', [GuestsController::class, 'delete'])->where('guest', '[0-9]+')->middleware('auth');
 Route::get('/console/guests/add', [GuestsController::class, 'addForm'])->middleware('auth');
@@ -63,6 +64,7 @@ Route::post('/console/guests/add', [GuestsController::class, 'add'])->middleware
 Route::get('/console/guests/edit/{guest:guest_id}', [GuestsController::class, 'editForm'])->where('guest', '[0-9]+')->middleware('auth');
 Route::post('/console/guests/edit/{guest:guest_id}', [GuestsController::class, 'edit'])->where('guest', '[0-9]+')->middleware('auth');
 
+//USERS
 Route::get('/console/users/list', [UsersController::class, 'list'])->middleware('auth');
 Route::get('/console/users/delete/{user:id}', [UsersController::class, 'delete'])->where('user', '[0-9]+')->middleware('auth');
 Route::get('/console/users/add', [UsersController::class, 'addForm'])->middleware('auth');
@@ -70,7 +72,9 @@ Route::post('/console/users/add', [UsersController::class, 'add'])->middleware('
 Route::get('/console/users/edit/{user:id}', [UsersController::class, 'editForm'])->where('user', '[0-9]+')->middleware('auth');
 Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->where('user', '[0-9]+')->middleware('auth');
 
-Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'index'])->middleware('auth');;
+//SEATING
+Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'index'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'saveForm'])->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'save'])->middleware('auth');
-Route::get('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'preview'])->middleware('auth');;
+Route::get('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'preview'])->middleware('auth');
+Route::get('/console/events/detail/{event:event_id}/seating/preview/generate-pdf', [SeatingController::class, 'generatePDF'])->middleware('auth');

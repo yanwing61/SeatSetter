@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\Guest;
 use App\Models\Group;
 use App\Models\Table;
+use Dompdf\Dompdf;
 
 class SeatingController extends Controller
 {
@@ -68,6 +69,23 @@ class SeatingController extends Controller
             'groups' => Group::all(),
             'tables' => Table::all(),
         ]);
+    }
+
+    public function generatePDF($event_id) {
+        $dompdf = new Dompdf();
+
+        // Load HTML content from a Blade view
+        $event = Event::find($event_id);
+        $guests = Guest::all();        
+        $html = view('seating.preview', compact('event', 'guests'))->render();
+        
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'landscape');
+
+        $dompdf->render();
+
+        return $dompdf->stream();
     }
 
 
