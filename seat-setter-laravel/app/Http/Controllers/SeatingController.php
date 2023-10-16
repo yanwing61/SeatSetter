@@ -77,24 +77,36 @@ class SeatingController extends Controller
         
         // Load HTML content from a Blade view
         $event = Event::find($event_id);
-        $guests = Guest::all();        
-        $html = view('seating.preview', compact('event', 'guests'))->render();
+        $guests = Guest::orderBy('table_id')->orderBy('guest_fname')->get();
+            
+        $html = view('seating.plancontent', compact('event', 'guests'))->render();
         
         $fileName = "seatingplan.pdf";
-
+    
         $dompdf->loadHtml($html);
-
         $dompdf->setPaper('A4', 'portrait');
-
         $dompdf->add_info('Title', 'SeatSetter');
+        try {
+            $dompdf->render();
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+        }
 
-        $dompdf->render();
-
-        header("Content-type:application/pdf");
-        header("Content-Disposition: attachment; filename=$fileName.pdf'");
-
-        return $dompdf->stream($fileName,array('Attachment'=>0));
+        $dompdf->stream($fileName);
+        exit;
+    
+        // return response()->stream(
+        //     function () use ($dompdf) {
+        //         $dompdf->stream();
+        //     },
+        //     200,
+        //     [
+        //         'Content-Type' => 'application/pdf',
+        //         'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
+        //     ]
+        // );
     }
+    
 
 
 }

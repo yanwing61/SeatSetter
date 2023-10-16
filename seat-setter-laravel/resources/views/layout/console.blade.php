@@ -57,6 +57,8 @@
 
     @yield ('content')
 
+    @yield('links')
+
     <footer id="footer">
       <div id="footer-copyright">
         &copy; Copyright Yan Wing Pang, 2023.
