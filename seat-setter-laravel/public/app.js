@@ -10,35 +10,43 @@ jQuery(window).on("load", function() {
         }
     });
 
-    $(".draggable").draggable();
-
-    $(".droppable").droppable({
-        drop: function(event, ui) {
-        // Calculate the current number of guests at the table
-        var currentGuestsCount = $(this).find('.draggable').length;
-        console.log(currentGuestsCount);
-
-        // Fetch the table's guest limit from its data attribute
-        var tableGuestLimit = parseInt($(this).data('limit'));
-        console.log(tableGuestLimit);
-
-        // Check if the table can accommodate another guest
-        if (currentGuestsCount < tableGuestLimit) {
-            $(this).addClass("ui-state-highlight");
-            $(this).find(".msg").html(" - Assigned");
-            
-            var guest_id = $(ui.draggable).data("name");
-            var table_id = $(this).data("name");
-            
-            seatingAssignments[guest_id] = table_id;
-            console.log('Current Seating Assignments:', seatingAssignments);
-    
-            updateSeatingInput();
-        } else {
-            // If the table's limit is reached, prevent the drop and alert the user
-            ui.draggable.draggable('option','revert',true);
-            alert('This table is full!');
+    $(".draggable").draggable({
+        start: function(event, ui) {
+            // Remember the original parent before dragging starts
+            originalParent = $(this).parent();
         }
+    });
+
+    $(".droppable").droppable({  
+        
+        drop: function(event, ui) {
+            $(ui.draggable).detach().css({top: 0, left: 0}).appendTo($(this));
+            var currentGuestsCount = $(this).find('.draggable').length;
+            console.log("currentGuestsCount: "+currentGuestsCount);
+        
+            var tableGuestLimit = parseInt($(this).data('limit'));
+            console.log("Limit: "+tableGuestLimit);
+
+            // Check if the table can accommodate another guest
+            if (currentGuestsCount > tableGuestLimit) {
+                // If the table's limit is reached, prevent the drop and alert the user
+                alert('This table is full!');
+                $(ui.draggable).detach().css({top: 0, left: 0}).appendTo(originalParent);
+                
+            } else {
+                $(ui.draggable).detach().css({top: 0, left: 0}).appendTo($(this));
+
+                $(this).addClass("ui-state-highlight");
+                $(this).find(".msg").html(" - Assigned");
+                
+                var guest_id = $(ui.draggable).data("name");
+                var table_id = $(this).data("name");
+                
+                seatingAssignments[guest_id] = table_id;
+                console.log('Current Seating Assignments:', seatingAssignments);
+        
+                updateSeatingInput();
+            }
     },
         
         out: function(event, ui) {

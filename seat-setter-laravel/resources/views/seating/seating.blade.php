@@ -2,6 +2,10 @@
 
 @section ('content')
     
+    <section>
+    <a href="/console/events/detail/{{$event->event_id}}"> Back to Event Page</a>
+    </section>
+    
     @include('seating.mainseating')
 
 @endsection
@@ -14,8 +18,5 @@
         <button type="submit">Save plan</button>
     </form>
 
-    <!-- <section>
-    <a href="/console/events/detail/{{$event->event_id}}/seating/preview/generate-img-pdf" target="_blank">Export seating plan image as PDF</a>
-    </section> -->
 
 @endsection
