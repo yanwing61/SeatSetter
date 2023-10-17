@@ -44,15 +44,21 @@ class TablesController extends Controller
     {
         $attributes = request()->validate([
             'num_of_guest' => 'required',
+            'num_of_table' => 'nullable|integer|min:1'
         ]);
 
-        $table = new Table();
-        $table->num_of_guest = $attributes['num_of_guest'];
-        $table->event_id = $event->event_id;
-        $table->save();
+        $numOfTables = $attributes['num_of_table'] ?? 1;
+
+        for ($i = 0; $i < $numOfTables; $i++) {
+            $table = new Table();
+            $table->num_of_guest = $attributes['num_of_guest'];
+            $table->event_id = $event->event_id;
+            $table->save();
+        }
+
 
         return redirect("/console/events/detail/{$event->event_id}/tables/list")
-            ->with('message', 'Table has been added.');
+            ->with('message', 'Table(s) have been added.');
 
     }
 
