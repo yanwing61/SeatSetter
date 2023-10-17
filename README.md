@@ -1,6 +1,6 @@
 # 🪑SeatSetter
 
-SeatSetter is a dynamic web application designed for event organizers. With its intuitive drag-and-drop interface, managing and visualizing seating assignments for events has never been more efficient.
+SeatSetter is a dynamic web application designed for event organizers to be used on desktop. With its intuitive drag-and-drop interface, managing and visualizing seating assignments for events has never been more efficient.
 
 ## 🪑Features
 - Drag-and-Drop Interface: An interactive and user-friendly way to assign guests to tables.
@@ -29,3 +29,17 @@ Once your seating plan is saved, you have the option to:
 - Export the plan as a .csv file for easy data processing and sharing.
 - Generate a list view in .pdf format for print or digital sharing.
 - Create an image representation of the plan in .pdf format for a visual reference.
+
+## 🪑Tech Stack
+SeatSetter leverages a robust combination of modern technologies to deliver a seamless and user-friendly experience:
+
+- PHP & Laravel: The core of SeatSetter is built using PHP, powered by the Laravel framework. Laravel provides a clean and elegant syntax while encompassing powerful tools required for large, robust applications.
+
+- Blade: Laravel's templating engine, Blade, allows for easy data embedding into views, ensuring dynamic content rendering throughout the application.
+
+- jQuery, jQueryUI & JavaScript: These technologies enrich the user interface with interactive features. The drag-and-drop functionality, instant updates, and dynamic visualization of seating arrangements are all brought to life using jQuery and vanilla JavaScript.
+
+- [Dompdf](https://github.com/dompdf/dompdf): This PHP library specializes in converting HTML to PDF, ensuring high-quality output while preserving design details.
+
+- HTML & CSS: The foundational web technologies, HTML and CSS, structure the content and define the look and feel of the application. With them, SeatSetter boasts a responsive and visually appealing interface suitable for various devices.
+
