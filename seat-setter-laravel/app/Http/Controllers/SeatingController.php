@@ -29,16 +29,6 @@ class SeatingController extends Controller
         ]);
     }
 
-    // public function saveForm(Event $event)
-    // {
-    //     return view('seating.seating', [
-    //         'event' => $event,
-    //         'guests' => Guest::all(),
-    //         'groups' => Group::all(),
-    //         'tables' => Table::all(),
-    //     ]);
-    // }
-
     public function save(Event $event, Request $request)
     {
         // Decode the JSON string into an associative array
@@ -135,17 +125,6 @@ class SeatingController extends Controller
        
         $dompdf->stream($fileName);
         exit;
-
-        // return response()->stream(
-        //     function () use ($dompdf) {
-        //         $dompdf->stream();
-        //     },
-        //     200,
-        //     [
-        //         'Content-Type' => 'application/pdf',
-        //         'Content-Disposition' => 'attachment; filename="' . $fileName . '"',
-        //     ]
-        // );
     }
 
     public function generateIMGPDF($event_id) {

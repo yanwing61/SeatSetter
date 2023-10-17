@@ -1,6 +1,41 @@
 jQuery(window).on("load", function() {
     var seatingAssignments = {}; //empty object to store the seat assignments
 
+    var tables = [];
+    $(".droppable").each(function() {
+        tables.push({
+            id: $(this).data("name"),
+            limit: $(this).data("limit"),
+            currentCount: $(this).find('.draggable').length
+        });
+    });
+
+    function autoSeatGuests() {
+        $(".draggable").each(function() {
+            var guest = $(this);
+            
+            for (var i = 0; i < tables.length; i++) {
+                if (tables[i].currentCount < tables[i].limit) {
+                    // Assign the guest to the table
+                    var tableElement = $(".droppable[data-name='" + tables[i].id + "']");
+                    guest.detach().css({top: 0, left: 0}).appendTo(tableElement);
+    
+                    // Update the seatingAssignments object
+                    seatingAssignments[guest.data("name")] = tables[i].id;
+                    
+                    // Increment the current count for this table
+                    tables[i].currentCount++;
+                    break;
+                }
+            }
+        });
+        updateSeatingInput();
+    }
+
+    $("#auto").click(function() {
+        autoSeatGuests();
+    });
+
     $('.draggable').each(function() {
         var guest_id = $(this).data("name");
         var closest_droppable = $(this).closest('.droppable');
@@ -22,10 +57,10 @@ jQuery(window).on("load", function() {
         drop: function(event, ui) {
             $(ui.draggable).detach().css({top: 0, left: 0}).appendTo($(this));
             var currentGuestsCount = $(this).find('.draggable').length;
-            console.log("currentGuestsCount: "+currentGuestsCount);
+            //console.log("currentGuestsCount: "+currentGuestsCount);
         
             var tableGuestLimit = parseInt($(this).data('limit'));
-            console.log("Limit: "+tableGuestLimit);
+            //console.log("Limit: "+tableGuestLimit);
 
             // Check if the table can accommodate another guest
             if (currentGuestsCount > tableGuestLimit) {

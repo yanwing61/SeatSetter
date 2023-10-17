@@ -74,7 +74,7 @@ Route::post('/console/users/edit/{user:id}', [UsersController::class, 'edit'])->
 
 //SEATING
 Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'index'])->middleware('auth');
-//Route::get('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'saveForm'])->middleware('auth');
+//Route::get('/console/events/detail/{event:event_id}/seating/auto', [SeatingController::class, 'autoSeating'])->middleware('auth');
 Route::post('/console/events/detail/{event:event_id}/seating/seating', [SeatingController::class, 'save'])->middleware('auth');
 Route::get('/console/events/detail/{event:event_id}/seating/preview', [SeatingController::class, 'preview'])->middleware('auth');
 
