@@ -24,10 +24,16 @@ h1, h2, h3, h4, h5{
     color: var(--pri-color);
 }
 
-header, footer{
+header{
     padding: 2em 3em 0 3em;
     margin: 0;
 }
+
+footer{
+    padding: 2em 4em;
+    margin: 0;
+}
+
 
 main{
     min-height: 65vh;
