@@ -6,13 +6,23 @@
 
     <h2>About SeatSetter</h2>
 
+    <p>SeatSetter is a cutting-edge web application designed to revolutionize the way event organizers manage and visualize seating assignments. Through its intuitive interface and powerful features, it transforms a potentially tedious process into an interactive and enjoyable experience.</p>
+
     <h3>Who is it for</h3>
-    <p>Seat Setter a responsive website that would also work on a smartphone like an app. It is designed for event organizers, wedding planners, corporate hosts, and anyone looking to simplify the task of seating arrangement for events.</p>
+    <ol>
+        <li>Event Organizers of All Scales: Whether you are orchestrating a large conference, planning an intimate dinner, or anything in between, SeatSetter is built to cater to your needs.</li>
+        <li>Wedding Planners: Struggling with seating charts for the big day? Let SeatSetter simplify the process, ensuring guests are seated just where you want them.</li>
+        <li>Corporate Event Managers: For seminars, conferences, and annual meetings, use SeatSetter to ensure every attendee has a spot and no table is overlooked.</li>
+        <li>Any Occasion, Any Size: From birthdays to anniversaries, fundraisers to gala dinners, SeatSetter's flexibility makes it the go-to choice for all your event planning needs.</li>
+    </ul>
 
     <h3>How does it work</h3>
-    <p>Users, while entering the guest list, can choose to group certain guests together and indicate if such a group must be seated at the same table. If users go for auto seating option, the system will prioritize seating these groups together, then distributing the remaining guests or groups to other tables.</p>
-    <p>An alternative could be a more hands-on approach. Users can manually adjust these arrangements through drag and drop the list directly onto tables and then save their arrangement. Thus ensured a harmonious seating experience for all attendees.</p>
-    
+    <ol>
+        <li>Guest & Table Management: Begin by adding guests and defining tables. Input essential details, group guests if required, and set table capacities effortlessly.</li>
+        <li>Drag, Drop, Done!: Navigate to the seating arrangement page, where you can simply drag guests and drop them onto the desired tables. The interface provides real-time visual feedback, making the process seamless.</li>
+        <li>Save & Share: Once you're satisfied with the arrangements, save your setup. The application offers diverse export options, allowing you to share the seating plan in formats like .csv, .pdf (list), and .pdf (image)</li>
+    </ol>
+
     <a href="/console/dashboard">Start Planning</a>
 
     </section>
