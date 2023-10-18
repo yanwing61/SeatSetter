@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5{
 }
 
 header, footer{
-    padding: 2em 3em;
+    padding: 2em 3em 0 3em;
     margin: 0;
 }
 
@@ -233,19 +233,6 @@ section a:hover, button:hover{
         align-self: center;
     }
 
-    #intro{
-        flex-direction: column;
-    }
-
-    #intro-text{
-        max-width: 100%;
-    }
-
-    .propic{
-        align-self: center;
-    }
-
-
 }
 
 @media screen and (max-width:400px) {
@@ -276,12 +263,4 @@ section a:hover, button:hover{
         position: relative;
     }
 
-    footer .slogan{
-        font-size: 2.5em;
-    }
-
-    #footer-contact{
-        flex-direction: column;
-        align-items: center;
-    }
 }
