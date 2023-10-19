@@ -41,5 +41,7 @@ SeatSetter leverages a robust combination of modern technologies to deliver a se
 
 - [Dompdf](https://github.com/dompdf/dompdf): This PHP library specializes in converting HTML to PDF, ensuring high-quality output while preserving design details.
 
+- Bootstrap: For frontend elements like tables and nav bar.
+  
 - HTML & CSS: The foundational web technologies, HTML and CSS, structure the content and define the look and feel of the application. With them, SeatSetter boasts a responsive and visually appealing interface suitable for various devices.
 
